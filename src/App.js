@@ -19,23 +19,45 @@ function App(props) {
       setAlert(null);
     }, 1500);
   };
+  const removeBodyClasses = () => {
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-primary");
+    document.body.classList.remove("bg-success");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.remove("bg-warning");
+  };
+  //Passing class as cls here, we can use any name
 
-  const toggleMode = () => {
+  const toggleMode = (cls) => {
+    // console.log(mode);
+    // console.log(cls);
+
+    removeBodyClasses();
+    document.body.classList.add("bg-" + cls);
     if (mode === "light") {
       setmode("dark");
+      // console.log(mode);
+      // console.log(cls);
       document.body.style.backgroundColor = "#042743";
-      document.body.style.color = "white";
-      showAlert("Dark Mode is enabled", "success");
+      document.body.style.color = cls === "dark" ? "white" : "black";
+      showAlert(cls + " Mode is enabled", "success");
       document.title = "Textify - Dark Mode";
     } else {
       setmode("light");
+
+      // console.log(mode);
+      // console.log(cls);
+
       document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
-      showAlert("Light Mode is enabled", "success");
+      document.body.style.color = cls === "dark" ? "white" : "black";
+
+      showAlert(cls + " Mode is enabled", "success");
       //? to show title
       document.title = "Textify - Light Mode";
     }
   };
+
   return (
     <>
       <Navbar title="Textify" mode={mode} toggleMode={toggleMode} />
@@ -50,5 +72,4 @@ function App(props) {
     </>
   );
 }
-
 export default App;

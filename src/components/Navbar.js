@@ -64,27 +64,83 @@ class Navbar extends React.Component {
                 </a>
               </li> */}
             </ul>
-            <div
+            <div className="d-flex">
+              <div
+                className="bg-primary rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("primary");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-danger rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("danger");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-success rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("success");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-warning rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("warning");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-light rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("light");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-dark rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("dark");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div>
+              {/* <div
+                className="bg-dark rounded mx-2"
+                onClick={() => {
+                  this.props.toggleMode("dark");
+                }}
+                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+              ></div> */}
+            </div>
+            {/* <div
               className={`form-check form-switch text-${
                 this.props.mode === "light" ? "dark" : "light"
               }`}
-            >
-              <input
+            > */}
+            {/* <input
                 className="form-check-input"
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"
-                onClick={this.props.toggleMode}
-              />
-              <label
+                //On Click need function but not function call.
+                onClick={() => {
+                  this.props.toggleMode(null);
+                }}
+              /> */}
+            {/* <label
                 className="form-check-label text-light"
                 htmlFor="flexSwitchCheckDefault"
-              >
-                {this.props.mode === "dark"
+              > */}
+            {/* {"Toggle Mode"}{" "} */}
+            {/* {this.props.mode === "dark" ? "Enable Light Mode" : "Disable Light Mode"}
+                {/* {this.props.mode === "dark"
                   ? "Enable Light Mode"
-                  : "Disable Light Mode"}
-              </label>
-            </div>
+                  : "Disable Light Mode"} */}
+            {/* </label>
+            </div> */}
             {/* <form className="d-flex" role="search">
               <input
                 className="form-control me-2"

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toggleMode from "../App";
 //!Concept of State.....
 //? 1st Import React,useState in React library
 //? 2nd Create a State Variable Where the text is defautl set "Enter Text Here"
@@ -37,6 +38,7 @@ export default function TextForm(props) {
     var text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     alert("Copied to clipboard");
     props.showAlert("Copied to clipboard", "success");
   };
@@ -70,7 +72,7 @@ export default function TextForm(props) {
     tchar = 0.008;
   };
 
-  const [text, setText] = useState("Enter Text Here");
+  const [text, setText] = useState("");
   // text = "Enter Text Here"; // Wrong way to change the State Variable
   // Settext("Enter Text Here"); // Correct way to change the State Variable
 
@@ -89,49 +91,86 @@ export default function TextForm(props) {
             value={text}
             onChange={handleOnChange}
             id="myBox"
-            rows="6"
+            rows="5"
             style={{
-              fontSize: "30px",
+              fontSize: "20px",
               border:
                 props.mode === "dark" ? "5px solid gray" : "5px solid black",
             }}
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleUpClick}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Convert to Uppercase
         </button>
 
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleLoClick}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleClearClick}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Clear Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleCopy}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleExtraSpaces}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Remove Extra Spaces
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCapitalize}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={handleCapitalize}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           First Character Capital
         </button>
-        <button className="btn btn-primary mx-2" onClick={hendleFontSize}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-2 my-2"
+          onClick={hendleFontSize}
+          style={{ color: "white", border: "2px solid white" }}
+        >
           Font Size
         </button>
       </div>
       <div className="container my-3">
         <h1>Your Text Summary</h1>
         <p>
-          {text.split(" ").length - 1} and {text.length} characters
+          {
+            //? text.split("/s+/ ").length use to get entered text word count
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
         <p>{tchar * text.split(" ").length} minutes read</p>
         <h2>Preview</h2>
-        <p>
-          {text.length > 0
-            ? text
-            : "Enter something in the textbox above to preview it here"}
-        </p>
+        <p>{text.length > 0 ? text : "Nothing to Preview"}</p>
       </div>
     </>
   );
