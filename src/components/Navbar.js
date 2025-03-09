@@ -105,7 +105,12 @@ class Navbar extends React.Component {
                 onClick={() => {
                   this.props.toggleMode("dark");
                 }}
-                style={{ height: "1.5rem", width: "1.5rem", cursor: "pointer" }}
+                style={{
+                  height: "1.5rem",
+                  width: "1.5rem",
+                  cursor: "pointer",
+                  border: "2px solid white",
+                }}
               ></div>
               {/* <div
                 className="bg-dark rounded mx-2"
